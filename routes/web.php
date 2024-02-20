@@ -1,9 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutSectionController;
+use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ContactUsController as AdminContactUsController;
 use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\MenuBuilderController;
+use App\Http\Controllers\Frontend\BlogsController;
+use App\Http\Controllers\Frontend\BlogSingleController;
 use App\Http\Controllers\Frontend\ContactUsController;
 use App\Http\Controllers\Frontend\FronendController;
 use App\Http\Controllers\ProfileController;
@@ -33,6 +37,25 @@ Route::get('/dashboard', function () {
 
 /**Menu-builder */
 Route::get('menu-builder',[MenuBuilderController::class, 'index' ])->name('menu-builder.index');
+
+
+/**blogs - admin-end */
+
+Route::resource('blog', BlogController::class);
+Route::resource('blogs', BlogController::class);
+
+/**blogs - fronend */
+Route::get('blogs',[BlogsController::class, 'index' ])->name('blogs.index');
+Route::get('blog-single',[BlogSingleController::class, 'index' ])->name('blog-single.index');
+
+
+ /** Blogs Category Routes */
+ Route::resource('blog-category', BlogCategoryController::class);
+
+ /** Blogs Routes */
+ Route::get('blogs/comments', [BlogController::class, 'blogComment'])->name('blogs.comments.index');
+ Route::get('blogs/comments/{id}', [BlogController::class, 'commentStatusUpdate'])->name('blogs.comments.update');
+ Route::delete('blogs/comments/{id}', [BlogController::class, 'commentDestroy'])->name('blogs.comments.destroy');
 
 
 /**contact-us */

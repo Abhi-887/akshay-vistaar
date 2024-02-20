@@ -10,6 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
+  @yield('styles')
   <link href="{{("admin/assets/img/favicon.png")}}" rel="icon">
   <link href="{{("admin/assets/img/apple-touch-icon.png")}}" rel="apple-touch-icon">
 
@@ -43,12 +44,14 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-          <li class="breadcrumb-item active"></li>
+          <li class="breadcrumb-item active">@yield('title')</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
     <div>
+
+
   @yield('content')
     </main>
 
@@ -65,6 +68,7 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
  <!-- Vendor JS Files -->
+ @yield('script')
  <script src="{{ url('admin') }}/assets/vendor/apexcharts/apexcharts.min.js"></script>
  <script src="{{ url('admin') }}/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
  <script src="{{ url('admin') }}/assets/chart.js/chart.umd.js"></script>
@@ -80,6 +84,8 @@
 
  <!-- Template Main JS File -->
  <script src="{{ url('admin') }}/assets/js/main.js"></script>
+
+
 </body>
 
 </html>
